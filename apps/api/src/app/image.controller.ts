@@ -1,7 +1,7 @@
-import { Controller, Delete, Get, Post } from "@nestjs/common";
-import { Message } from "@sfeir-talk-swagger/api-interfaces";
+import { Controller, Delete, Get, Post, Query } from "@nestjs/common";
 import { AppService } from "./app.service";
-import { ApiTags } from "@nestjs/swagger";
+import { ApiBody, ApiQuery, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { Image } from "./image.model";
 
 @ApiTags("Image")
 @Controller()
@@ -9,22 +9,29 @@ export class ImageController {
     constructor(private readonly appService: AppService) {}
 
     @Get("image")
-    getImage(): Message {
-        return this.appService.getData();
+    @ApiResponse({ status: 200, type: Image })
+    @ApiQuery({ name: "id" })
+    getImage(@Query("id") id: number): Image {
+        return this.appService.getImage(id);
     }
 
     @Get("images")
-    getImages(): Message {
-        return this.appService.getData();
+    @ApiResponse({ status: 200, type: Image })
+    getImages(): Image[] {
+        return this.appService.getImages();
     }
 
     @Post("image")
-    postImage(): Message {
-        return this.appService.getData();
+    @ApiBody({ type: Image })
+    @ApiResponse({ status: 201 })
+    postImage(): string {
+        return this.appService.createImage();
     }
 
     @Delete("image")
-    deleteImage(): Message {
-        return this.appService.getData();
+    @ApiBody({ type: Image })
+    @ApiResponse({ status: 200 })
+    deleteImage(): string {
+        return this.appService.deleteImage();
     }
 }
