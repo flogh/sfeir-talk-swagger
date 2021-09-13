@@ -13,19 +13,14 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"]
+            "assets": []
           },
           "configurations": {
             "production": {
               "optimization": true,
               "extractLicenses": true,
               "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/api/src/environments/environment.ts",
-                  "with": "apps/api/src/environments/environment.prod.ts"
-                }
-              ]
+              "fileReplacements": []
             }
           }
         },
@@ -82,7 +77,7 @@
             "polyfills": "apps/front/src/polyfills.ts",
             "tsConfig": "apps/front/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["apps/front/src/favicon.ico", "apps/front/src/assets"],
+            "assets": ["apps/front/src/favicon.ico"],
             "styles": ["apps/front/src/styles.scss"],
             "scripts": []
           },
@@ -100,12 +95,7 @@
                   "maximumError": "4kb"
                 }
               ],
-              "fileReplacements": [
-                {
-                  "replace": "apps/front/src/environments/environment.ts",
-                  "with": "apps/front/src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [],
               "outputHashing": "all"
             },
             "development": {
