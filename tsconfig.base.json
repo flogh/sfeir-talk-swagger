@@ -15,7 +15,7 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@sfeir-talk-swagger/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+            "@sfeir-talk-swagger/openapi": ["libs/openapi/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

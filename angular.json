@@ -47,20 +47,6 @@
                 }
             }
         },
-        "api-interfaces": {
-            "root": "libs/api-interfaces",
-            "sourceRoot": "libs/api-interfaces/src",
-            "projectType": "library",
-            "architect": {
-                "lint": {
-                    "builder": "@nrwl/linter:eslint",
-                    "outputs": ["{options.outputFile}"],
-                    "options": {
-                        "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
-                    }
-                }
-            }
-        },
         "front": {
             "projectType": "application",
             "root": "apps/front",
@@ -169,6 +155,28 @@
                     "outputs": ["{options.outputFile}"],
                     "options": {
                         "lintFilePatterns": ["apps/front-e2e/**/*.{js,ts}"]
+                    }
+                }
+            }
+        },
+        "openapi": {
+            "projectType": "library",
+            "root": "libs/openapi",
+            "sourceRoot": "libs/openapi/src",
+            "prefix": "sfeir-talk-swagger",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/openapi"],
+                    "options": {
+                        "jestConfig": "libs/openapi/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["libs/openapi/src/**/*.ts", "libs/openapi/src/**/*.html"]
                     }
                 }
             }
