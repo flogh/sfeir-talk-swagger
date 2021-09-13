@@ -2,9 +2,18 @@ import { Logger } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app/app.module";
 import { SwaggerModule, DocumentBuilder, SwaggerCustomOptions } from "@nestjs/swagger";
+import { CorsOptions } from "@nestjs/common/interfaces/external/cors-options.interface";
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
+    /* CORS */
+    const corsOptions: CorsOptions = {
+        origin: true,
+        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+        optionsSuccessStatus: 200,
+        credentials: true,
+    };
+    app.enableCors(corsOptions);
     /* OPEN API */
     const config = new DocumentBuilder()
         .setTitle("Sfeir talk Swagger")

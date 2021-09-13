@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Post, Query } from "@nestjs/common";
+import { Controller, Delete, Get, ParseIntPipe, Post, Query } from "@nestjs/common";
 import { AppService } from "./app.service";
 import { ApiBody, ApiQuery, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Image } from "./image.model";
@@ -11,7 +11,7 @@ export class ImageController {
     @Get("image")
     @ApiResponse({ status: 200, type: Image })
     @ApiQuery({ name: "id" })
-    getImage(@Query("id") id: number): Image {
+    getImage(@Query("id", new ParseIntPipe()) id: number): Image {
         return this.appService.getImage(id);
     }
 
