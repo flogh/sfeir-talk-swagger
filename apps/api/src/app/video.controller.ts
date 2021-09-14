@@ -2,7 +2,6 @@ import { Controller, Delete, Get, Post } from "@nestjs/common";
 import { AppService } from "./app.service";
 import { ApiBody, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Video } from "./video.model";
-import { Image } from "./image.model";
 
 @ApiTags("Video")
 @Controller()
@@ -16,7 +15,7 @@ export class VideoController {
     }
 
     @Get("videos")
-    @ApiResponse({ status: 200, type: Video })
+    @ApiResponse({ status: 200, type: [Video] })
     getVideos(): Video[] {
         return this.appService.getData();
     }

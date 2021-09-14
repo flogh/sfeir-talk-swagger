@@ -200,7 +200,7 @@ export class ApiImageService extends BaseService {
    * This method doesn't expect any request body.
    */
   imageControllerGetImages$Response(params?: {
-  }): Observable<StrictHttpResponse<Image>> {
+  }): Observable<StrictHttpResponse<Array<Image>>> {
 
     const rb = new RequestBuilder(this.rootUrl, ApiImageService.ImageControllerGetImagesPath, 'get');
     if (params) {
@@ -212,7 +212,7 @@ export class ApiImageService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Image>;
+        return r as StrictHttpResponse<Array<Image>>;
       })
     );
   }
@@ -228,10 +228,10 @@ export class ApiImageService extends BaseService {
    * This method doesn't expect any request body.
    */
   imageControllerGetImages(params?: {
-  }): Observable<Image> {
+  }): Observable<Array<Image>> {
 
     return this.imageControllerGetImages$Response(params).pipe(
-      map((r: StrictHttpResponse<Image>) => r.body as Image)
+      map((r: StrictHttpResponse<Array<Image>>) => r.body as Array<Image>)
     );
   }
 

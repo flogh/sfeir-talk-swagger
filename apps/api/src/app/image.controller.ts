@@ -18,7 +18,7 @@ export class ImageController {
 
     @Get("images")
     @ApiOperation({ summary: "This endpoint returns all images" })
-    @ApiResponse({ status: 200, type: Image })
+    @ApiResponse({ status: 200, type: [Image] })
     getImages(): Image[] {
         return this.appService.getImages();
     }

@@ -169,7 +169,7 @@ export class ApiVideoService extends BaseService {
    * This method doesn't expect any request body.
    */
   videoControllerGetVideos$Response(params?: {
-  }): Observable<StrictHttpResponse<Video>> {
+  }): Observable<StrictHttpResponse<Array<Video>>> {
 
     const rb = new RequestBuilder(this.rootUrl, ApiVideoService.VideoControllerGetVideosPath, 'get');
     if (params) {
@@ -181,7 +181,7 @@ export class ApiVideoService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Video>;
+        return r as StrictHttpResponse<Array<Video>>;
       })
     );
   }
@@ -193,10 +193,10 @@ export class ApiVideoService extends BaseService {
    * This method doesn't expect any request body.
    */
   videoControllerGetVideos(params?: {
-  }): Observable<Video> {
+  }): Observable<Array<Video>> {
 
     return this.videoControllerGetVideos$Response(params).pipe(
-      map((r: StrictHttpResponse<Video>) => r.body as Video)
+      map((r: StrictHttpResponse<Array<Video>>) => r.body as Array<Video>)
     );
   }
 
