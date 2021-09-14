@@ -1,5 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import { Message } from "@sfeir-talk-swagger/api-interfaces";
 import { Image } from "./image.model";
 
 @Injectable()
