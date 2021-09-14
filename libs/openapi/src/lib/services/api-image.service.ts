@@ -28,6 +28,10 @@ export class ApiImageService extends BaseService {
   static readonly ImageControllerGetImagePath = '/image';
 
   /**
+   * This endpoint returns an image depending on the id passed in parameter.
+   *
+   *
+   *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `imageControllerGetImage()` instead.
    *
@@ -54,6 +58,10 @@ export class ApiImageService extends BaseService {
   }
 
   /**
+   * This endpoint returns an image depending on the id passed in parameter.
+   *
+   *
+   *
    * This method provides access to only to the response body.
    * To access the full response (for headers, for example), `imageControllerGetImage$Response()` instead.
    *
@@ -74,6 +82,10 @@ export class ApiImageService extends BaseService {
   static readonly ImageControllerPostImagePath = '/image';
 
   /**
+   * This endpoint insert image passed in body.
+   *
+   *
+   *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `imageControllerPostImage()` instead.
    *
@@ -100,6 +112,10 @@ export class ApiImageService extends BaseService {
   }
 
   /**
+   * This endpoint insert image passed in body.
+   *
+   *
+   *
    * This method provides access to only to the response body.
    * To access the full response (for headers, for example), `imageControllerPostImage$Response()` instead.
    *
@@ -120,6 +136,10 @@ export class ApiImageService extends BaseService {
   static readonly ImageControllerDeleteImagePath = '/image';
 
   /**
+   * This endpoint delete image passed in body.
+   *
+   *
+   *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `imageControllerDeleteImage()` instead.
    *
@@ -146,6 +166,10 @@ export class ApiImageService extends BaseService {
   }
 
   /**
+   * This endpoint delete image passed in body.
+   *
+   *
+   *
    * This method provides access to only to the response body.
    * To access the full response (for headers, for example), `imageControllerDeleteImage$Response()` instead.
    *
@@ -166,6 +190,10 @@ export class ApiImageService extends BaseService {
   static readonly ImageControllerGetImagesPath = '/images';
 
   /**
+   * This endpoint returns all images.
+   *
+   *
+   *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `imageControllerGetImages()` instead.
    *
@@ -190,6 +218,10 @@ export class ApiImageService extends BaseService {
   }
 
   /**
+   * This endpoint returns all images.
+   *
+   *
+   *
    * This method provides access to only to the response body.
    * To access the full response (for headers, for example), `imageControllerGetImages$Response()` instead.
    *

@@ -9,6 +9,7 @@ import { RequestBuilder } from '../request-builder';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
+import { Video } from '../models/video';
 
 @Injectable({
   providedIn: 'root',
@@ -33,19 +34,19 @@ export class ApiVideoService extends BaseService {
    * This method doesn't expect any request body.
    */
   videoControllerGetVideo$Response(params?: {
-  }): Observable<StrictHttpResponse<void>> {
+  }): Observable<StrictHttpResponse<Video>> {
 
     const rb = new RequestBuilder(this.rootUrl, ApiVideoService.VideoControllerGetVideoPath, 'get');
     if (params) {
     }
 
     return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*'
+      responseType: 'json',
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+        return r as StrictHttpResponse<Video>;
       })
     );
   }
@@ -57,10 +58,10 @@ export class ApiVideoService extends BaseService {
    * This method doesn't expect any request body.
    */
   videoControllerGetVideo(params?: {
-  }): Observable<void> {
+  }): Observable<Video> {
 
     return this.videoControllerGetVideo$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
+      map((r: StrictHttpResponse<Video>) => r.body as Video)
     );
   }
 
@@ -73,13 +74,15 @@ export class ApiVideoService extends BaseService {
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `videoControllerPostVideo()` instead.
    *
-   * This method doesn't expect any request body.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  videoControllerPostVideo$Response(params?: {
+  videoControllerPostVideo$Response(params: {
+    body: Video
   }): Observable<StrictHttpResponse<void>> {
 
     const rb = new RequestBuilder(this.rootUrl, ApiVideoService.VideoControllerPostVideoPath, 'post');
     if (params) {
+      rb.body(params.body, 'application/json');
     }
 
     return this.http.request(rb.build({
@@ -97,9 +100,10 @@ export class ApiVideoService extends BaseService {
    * This method provides access to only to the response body.
    * To access the full response (for headers, for example), `videoControllerPostVideo$Response()` instead.
    *
-   * This method doesn't expect any request body.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  videoControllerPostVideo(params?: {
+  videoControllerPostVideo(params: {
+    body: Video
   }): Observable<void> {
 
     return this.videoControllerPostVideo$Response(params).pipe(
@@ -116,13 +120,15 @@ export class ApiVideoService extends BaseService {
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `videoControllerDeleteVideo()` instead.
    *
-   * This method doesn't expect any request body.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  videoControllerDeleteVideo$Response(params?: {
+  videoControllerDeleteVideo$Response(params: {
+    body: Video
   }): Observable<StrictHttpResponse<void>> {
 
     const rb = new RequestBuilder(this.rootUrl, ApiVideoService.VideoControllerDeleteVideoPath, 'delete');
     if (params) {
+      rb.body(params.body, 'application/json');
     }
 
     return this.http.request(rb.build({
@@ -140,9 +146,10 @@ export class ApiVideoService extends BaseService {
    * This method provides access to only to the response body.
    * To access the full response (for headers, for example), `videoControllerDeleteVideo$Response()` instead.
    *
-   * This method doesn't expect any request body.
+   * This method sends `application/json` and handles request body of type `application/json`.
    */
-  videoControllerDeleteVideo(params?: {
+  videoControllerDeleteVideo(params: {
+    body: Video
   }): Observable<void> {
 
     return this.videoControllerDeleteVideo$Response(params).pipe(
@@ -162,19 +169,19 @@ export class ApiVideoService extends BaseService {
    * This method doesn't expect any request body.
    */
   videoControllerGetVideos$Response(params?: {
-  }): Observable<StrictHttpResponse<void>> {
+  }): Observable<StrictHttpResponse<Video>> {
 
     const rb = new RequestBuilder(this.rootUrl, ApiVideoService.VideoControllerGetVideosPath, 'get');
     if (params) {
     }
 
     return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*'
+      responseType: 'json',
+      accept: 'application/json'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+        return r as StrictHttpResponse<Video>;
       })
     );
   }
@@ -186,10 +193,10 @@ export class ApiVideoService extends BaseService {
    * This method doesn't expect any request body.
    */
   videoControllerGetVideos(params?: {
-  }): Observable<void> {
+  }): Observable<Video> {
 
     return this.videoControllerGetVideos$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
+      map((r: StrictHttpResponse<Video>) => r.body as Video)
     );
   }
 
